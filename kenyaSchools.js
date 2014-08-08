@@ -21,7 +21,7 @@ d3.csv('kenyaschools.csv', function(data){
           // kenya x right - 41.9
           var geoLococation = data['Geolocation'].split(', ')
           var xGeolocation = geoLococation[1].slice(0, geoLococation[1].length - 2)
-          return (100 * xGeolocation) - 3000 ;
+          return (100 * xGeolocation) - 3200 ;
         },
         'fill': function(data){
           // if(  )
