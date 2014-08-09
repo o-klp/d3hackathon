@@ -24,34 +24,34 @@ d3.csv('kenyaschools.csv', function(data){
           return (100 * xGeolocation) - 3200 ;
         },
         'fill': function(data){
-          // if(  )
-          var size = data['Total Enrolment'];
-          if( size > 1000 ){
-            return "#0B4C66"
+          var toiletCount = parseInt(data['Boys Toilets']) + parseInt(data['Girls Toilets']) + parseInt(data['Teachers Toilets']);
+          console.log(toiletCount);
+          if( toiletCount > 20 ){
+            return "#660300"
           }
-          if( size > 750 ){
-            return '#295466';
+          if( toiletCount > 15 ){
+            return '#A50904';
           }
-          if( size > 500 ){
-            return '#1384B2';
+          if( toiletCount > 10 ){
+            return '#E50700';
           }
-          if( size > 250 ){
-            return '#18AAE5';
+          if( toiletCount > 5 ){
+            return '#FF2A23';
           }
-          return '#67D3FF';
+          return '#FF645F';
         }
       })
     });
 
 var colorLegend = [
-  {fill: '#0B4C66', text: '> 1000' },
-  {fill: '#295466', text: '1000-750' },
-  {fill: '#1384B2', text: '750-500' },
-  {fill: '#18AAE5', text: '500-250' },
-  {fill: '#67D3FF', text: '< 250' }
+  { fill: '#660300', text: '> 20' },
+  { fill: '#A50904', text: '20-15' },
+  { fill: '#E50700', text: '15-10' },
+  { fill: '#FF2A23', text: '10-5' },
+  { fill: '#FF645F', text: '< 5' }
 ]
 
-d3.select('body').selectAll('div')
+d3.select('body').selectAll('span')
       .data(colorLegend)
       .enter()
       .append('div')
