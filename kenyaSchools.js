@@ -14,18 +14,17 @@ d3.csv('kenyaschools.csv', function(data){
           // kenya y bottom - 4.6
           var geoLococation = data['Geolocation'].split(', ')
           var yGeolocation = geoLococation[0].slice(1, geoLococation[0].length - 1);
-          return 625 + (-1 * (120 * yGeolocation));
+          return 647 + (-1 * (120 * yGeolocation));
         },
         'cx': function(data){
           // kenya x left - 34
           // kenya x right - 41.9
           var geoLococation = data['Geolocation'].split(', ')
           var xGeolocation = geoLococation[1].slice(0, geoLococation[1].length - 2)
-          return (100 * xGeolocation) - 3200 ;
+          return (100 * xGeolocation) - 3172 ;
         },
         'fill': function(data){
           var toiletCount = parseInt(data['Boys Toilets']) + parseInt(data['Girls Toilets']) + parseInt(data['Teachers Toilets']);
-          console.log(toiletCount);
           if( toiletCount > 20 ){
             return "#660300"
           }
