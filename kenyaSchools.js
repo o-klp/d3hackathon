@@ -10,18 +10,29 @@ d3.csv('kenyaschools.csv', function(data){
       .attr({
         'r': '2',
         'cy': function(data){
-          // kenya y top - 5
-          // kenya y bottom - 4.6
           var geoLococation = data['Geolocation'].split(', ')
           var yGeolocation = geoLococation[0].slice(1, geoLococation[0].length - 1);
-          return 647 + (-1 * (120 * yGeolocation));
+          var yMissPlacement = 647 + (-1 * (120 * yGeolocation));
+
+          var yDistance = Math.abs(662.80964 - yMissPlacement);
+          if( yMissPlacement <= 662.80964 ){
+            var yPlacement = yMissPlacement + (yDistance * 0.0608977244)
+          }else{
+            var yPlacement = yMissPlacement - (yDistance * 0.0718977244)
+          }
+          return yPlacement;
         },
         'cx': function(data){
-          // kenya x left - 34
-          // kenya x right - 41.9
           var geoLococation = data['Geolocation'].split(', ')
           var xGeolocation = geoLococation[1].slice(0, geoLococation[1].length - 2)
-          return (100 * xGeolocation) - 3172 ;
+          var xMissPlacement = (100 * xGeolocation) - 3172;
+          var xDistance = Math.abs(563.11 - xMissPlacement);
+          if( xMissPlacement <= 563.11 ){
+            var xPlacement = xMissPlacement - (xDistance * 0.1308977244)
+          }else{
+            var xPlacement = xMissPlacement + (xDistance * 0.1158977244)
+          }
+          return xPlacement;
         },
         'fill': function(data){
           var toiletCount = parseInt(data['Boys Toilets']) + parseInt(data['Girls Toilets']) + parseInt(data['Teachers Toilets']);
