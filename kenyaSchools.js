@@ -1,7 +1,7 @@
 
 var schoolData = [];
 
-d3.csv('kenyaschools.csv', function(data){
+d3.csv('./kenyaschools.csv', function(data){
 
     d3.select('body').selectAll('svg').selectAll('circle')
       .data(data)
